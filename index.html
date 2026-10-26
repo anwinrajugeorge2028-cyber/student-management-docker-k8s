@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Student Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">STUDENT SERVICES</p>
+      <h1>Student Manager</h1>
+    </div>
+    <span class="status"><span></span> Local demo</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div>
+        <h2>Student management</h2>
+        <p>Keep student records organized in one simple place.</p>
+      </div>
+      <button id="addStudentBtn" class="primary">+ Add student</button>
+    </section>
+
+    <section class="stats" aria-label="Student summary">
+      <article class="stat-card"><span>Total students</span><strong id="totalCount">0</strong></article>
+      <article class="stat-card"><span>Active</span><strong id="activeCount">0</strong></article>
+      <article class="stat-card"><span>Inactive</span><strong id="inactiveCount">0</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div>
+          <h3>Student records</h3>
+          <p class="muted">Add, edit, search, or remove student records.</p>
+        </div>
+        <input id="searchInput" type="search" placeholder="Search name, ID, or course…" aria-label="Search students">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Student</th><th>Student ID</th><th>Course</th><th>Email</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="studentRows"></tbody>
+        </table>
+      </div>
+      <p id="emptyState" class="empty" hidden>No students found. Add a student to get started.</p>
+      <div class="panel-footer"><span id="recordCount">0 records</span><button id="resetDemoBtn" class="text-button">Reset demo data</button></div>
+    </section>
+    <p class="note">Demo note: records are saved in this browser using local storage. This is a front-end demonstration, not a secure multi-user database.</p>
+  </main>
+
+  <dialog id="studentDialog">
+    <form id="studentForm" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">STUDENT RECORD</p><h2 id="dialogTitle">Add student</h2></div><button type="button" id="closeDialog" class="icon-button" aria-label="Close">×</button></div>
+      <input type="hidden" id="studentKey">
+      <label>Full name<input id="name" required maxlength="80" placeholder="e.g. Alex Thomas"></label>
+      <div class="two-col">
+        <label>Student ID<input id="studentId" required maxlength="24" placeholder="e.g. STU-1004"></label>
+        <label>Course<input id="course" required maxlength="80" placeholder="e.g. BCA"></label>
+      </div>
+      <label>Email address<input id="email" type="email" required maxlength="120" placeholder="student@example.com"></label>
+      <label>Status<select id="status"><option>Active</option><option>Inactive</option></select></label>
+      <p id="formError" class="error" role="alert"></p>
+      <div class="dialog-actions"><button type="button" id="cancelBtn" class="secondary">Cancel</button><button type="submit" class="primary">Save student</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
